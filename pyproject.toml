@@ -1,0 +1,10 @@
+[project]
+name = "marimo-getting-started"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [{ name = "Дамјан Георгиевски", email = "gdamjan@gmail.com" }]
+requires-python = ">=3.13"
+dependencies = [
+    "marimo>=0.14.16",
+]
