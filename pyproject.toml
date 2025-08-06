@@ -3,8 +3,17 @@ name = "marimo-getting-started"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
+license-files = ["LICENSE"]
+classifiers = ["Private :: Do Not Upload"]
 authors = [{ name = "Дамјан Георгиевски", email = "gdamjan@gmail.com" }]
 requires-python = ">=3.13"
 dependencies = [
     "marimo>=0.14.16",
+]
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.403",
+    "pytest>=8.4.1",
+    "ruff>=0.12.7",
 ]
