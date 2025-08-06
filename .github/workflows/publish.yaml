@@ -1,10 +1,9 @@
 name: Publish to Github Pages
 
 on:
-  # push:
-  #   tags:
-  #     - "v*"
   release:
+    types: [published]
+    
 
 jobs:
   build:
