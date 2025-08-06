@@ -41,7 +41,7 @@ def _(mo):
     mo.accordion(
         {
             "Tip: disabling automatic execution": mo.md(
-                rf"""
+                r"""
             marimo lets you disable automatic execution: just go into the
             notebook settings and set
 
