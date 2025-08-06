@@ -1,9 +1,13 @@
+# In order for Deploy to Github Pages to work, some settings on the repository need to be configured
+# - on settings/pages, Build and deployment: source needs to be `Github Actions`
+# - that will create a `github-pages` environment (on settings/environments) with one protection rule
+#   it defaults to allowing just the `main` branch to do deployments
+# - add a tag rule allowing `v*` tags to use the `github-pages` environment
 name: Publish to Github Pages
 
 on:
   release:
     types: [published]
-    
 
 jobs:
   build:
