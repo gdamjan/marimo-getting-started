@@ -1,0 +1,45 @@
+name: Publish to Github Pages
+
+on:
+  # push:
+  #   tags:
+  #     - "v*"
+  release:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install the project
+        run: uv sync --no-dev --locked
+
+      - name: 📄 Export notebook
+        run: |
+          uv run marimo export html-wasm notebook.py -o _build --mode run
+
+      - name: 📦 Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    permissions:
+      pages: write
+      id-token: write
+
+    steps:
+      - name: 🌐 Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages
